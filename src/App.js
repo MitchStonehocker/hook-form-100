@@ -6,6 +6,7 @@ import React from 'react'
 
 import Todo from './Examples/Todo'
 import NewTodo from './Examples/NewTodo'
+import UsaStateSelector from './Examples/UsaStateSelector'
 
 import './App.css'
 
@@ -16,6 +17,7 @@ function App () {
       <main className='App-main'>
         <Todo />
         <NewTodo />
+        <UsaStateSelector />
       </main>
       <footer className='App-footer'>footer</footer>
     </div>

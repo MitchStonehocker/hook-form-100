@@ -44,10 +44,11 @@ function NewTodo (props) {
           <TextField
             id='outlined-with-placeholder'
             label='Title'
-            placeholder='Placeholder'
+            placeholder=''
             className={classes.textField}
             margin='normal'
             variant='outlined'
+            required
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
@@ -56,12 +57,13 @@ function NewTodo (props) {
           <TextField
             id='outlined-textarea'
             label='Todo content'
-            placeholder='Placeholder'
+            placeholder=''
             multiline
             rows='4'
             className={classes.textField}
             margin='normal'
             variant='outlined'
+            required
             value={body}
             onChange={e => setBody(e.target.value)}
           />
