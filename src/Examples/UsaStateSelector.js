@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { usaStates } from './refLists'
 
+import { useStyles } from '../hooks/StyleHooks'
 import {
   Card,
   CardContent,
@@ -17,21 +18,26 @@ import {
 // import { withStyles } from '@material-ui/core/styles'
 // import { styles } from '../styles'
 
-export default function UsaStateSelector (props) {
-  // const { classes } = props
+export default function UsaStateSelector () {
+  // use of hooks to bring classes style sheet in (usually done with HOC) and access the theme
+  const classes = useStyles()
   const [usaState, setUsaState] = useState('')
 
   function handleChange (event) {
     setUsaState(event.target.value)
   }
 
-  console.log('>>>-UsaStateSelector-usaStates->', usaStates)
+  // console.log('>>>-UsaStateSelector-usaStates->', usaStates)
 
   return (
-    <Card>
+    <Card className={classes.card}>
       <CardContent>
-        <form>
-          <FormControl variant='outlined' required>
+        <form className={classes.form}>
+          <FormControl
+            variant='outlined'
+            required
+            className={classes.formControl}
+          >
             <InputLabel htmlFor='outlined-usaState-simple'>State</InputLabel>
             <Select
               value={usaState}
@@ -52,10 +58,6 @@ export default function UsaStateSelector (props) {
                   {state.name}
                 </MenuItem>
               ))}
-
-              {/* <MenuItem value={'CA'}>CA</MenuItem>
-              <MenuItem value={'NY'}>NY</MenuItem>
-              <MenuItem value={'WI'}>WI</MenuItem> */}
             </Select>
             <FormHelperText>* Required</FormHelperText>
           </FormControl>

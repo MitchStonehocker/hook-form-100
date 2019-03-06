@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 
 import { useAsyncEndpoint } from '../hooks/useEndpoint'
 
-import { withStyles } from '@material-ui/core/styles'
-import { styles } from '../styles'
-
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
+import { useStyles } from '../hooks/StyleHooks'
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  TextField
+} from '@material-ui/core'
 
 const todosApi = 'https://jsonplaceholder.typicode.com/todos'
 
@@ -24,8 +24,10 @@ function postTodoEndpoint () {
   }))
 }
 
-function NewTodo (props) {
-  const { classes } = props
+export default function NewTodo () {
+  // use of hooks to bring classes style sheet in (usually done with HOC) and access the theme
+  const classes = useStyles()
+
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [newTodo, postNewTodo] = postTodoEndpoint()
@@ -90,5 +92,3 @@ function NewTodo (props) {
     </Card>
   )
 }
-
-export default withStyles(styles)(NewTodo)

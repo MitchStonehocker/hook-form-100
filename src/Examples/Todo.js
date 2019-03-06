@@ -4,19 +4,21 @@ import React, { useState } from 'react'
 
 import { useEndpoint } from '../hooks/useEndpoint'
 
-import { withStyles } from '@material-ui/core/styles'
-import { styles } from '../styles'
-
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import { useStyles } from '../hooks/StyleHooks'
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography
+} from '@material-ui/core'
 
 const todosApi = 'https://jsonplaceholder.typicode.com/todos'
 
-function Todo (props) {
-  const { classes } = props
+export default function Todo () {
+  // use of hooks to bring classes style sheet in (usually done with HOC) and access the theme
+  const classes = useStyles()
+
   const bull = <span className={classes.bullet}>•</span>
 
   const [count, setCount] = useState(1)
@@ -57,5 +59,3 @@ function Todo (props) {
     </Card>
   )
 }
-
-export default withStyles(styles)(Todo)

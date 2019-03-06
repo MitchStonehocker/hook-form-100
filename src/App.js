@@ -4,23 +4,35 @@
 
 import React from 'react'
 
+import { createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/styles'
+
 import Todo from './Examples/Todo'
 import NewTodo from './Examples/NewTodo'
 import UsaStateSelector from './Examples/UsaStateSelector'
 
 import './App.css'
 
+// create our material ui theme using up to date typography variables
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  }
+})
+
 function App () {
   return (
-    <div>
-      <header className='App-header'>header</header>
-      <main className='App-main'>
-        <Todo />
-        <NewTodo />
-        <UsaStateSelector />
-      </main>
-      <footer className='App-footer'>footer</footer>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <header className='App-header'>header</header>
+        <main className='App-main'>
+          <Todo />
+          <NewTodo />
+          <UsaStateSelector />
+        </main>
+        <footer className='App-footer'>footer</footer>
+      </div>
+    </ThemeProvider>
   )
 }
 
